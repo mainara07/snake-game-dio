@@ -16,11 +16,27 @@ function criarBG() {
 function criarCobrinha() {
   for (i = 0; i < snake.length; i++) {
     context.fillStyle = "green";
-    context.fillRect.snake[i].s, snake[i].y, box, box;
+    context.fillRect(snake[i].x, snake[i].y, box, box);
   }
 }
 
+// evento para definir o andamento da cobra durante o jogo
+document.addEventListener("keydown", update);
+
+//só muda se for a direcao contraria - quando clicar o eventlistener vai passar como argumento essas  informações 
+function update(event){
+  if(event.keyCode == 37 && direcao != "right") direcao="left";
+  if(event.keyCode == 38 && direcao != "down") direcao="up";
+  if(event.keyCode == 39 && direcao != "left") direcao="right";
+  if(event.keyCode == 40 && direcao != "down") direcao="down";
+}
+
 function iniciarJogo() {
+  if(snake[0].x > 15 * box && direcao == "right") snake[0].x =0;
+  if(snake[0].x <0 && direcao=="left") snake[0].x = 16 * box;
+  if(snake[0].y > 15 * box && direcao =="down") snake[0].y =0;
+  if(snake[0].y < 0 && direcao =="up") snake.y= 16 * box
+
   criarBG();
   criarCobrinha();
   
@@ -46,3 +62,7 @@ function iniciarJogo() {
 }
 
 let jogo = setInterval(iniciarJogo, 100);
+
+
+
+
