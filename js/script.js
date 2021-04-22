@@ -13,18 +13,18 @@ let food = {
 }
 
 function criarBG() {
-  context.fillStyle = "lightgreen"; //trabalha com o estilo
+  context.fillStyle = "black"; //trabalha com o estilo
   context.fillRect(0, 0, 16 * box, 16 * box); //trabalha com x e y + altura e largura
 } //desenha e define uma cor
 
 function criarCobrinha() {
   for (i = 0; i < snake.length; i++) {
-    context.fillStyle = "green";
+    context.fillStyle = "purple";
     context.fillRect(snake[i].x, snake[i].y, box, box);
   }
 }
 function criarComida () {
-  context.fillStyle = "purple"
+  context.fillStyle = "orange"
   context.fillRect(food.x, food.y, box, box)
 }
 // evento para definir o andamento da cobra durante o jogo
@@ -47,9 +47,9 @@ function iniciarJogo() {
   }
 
   if(snake[0].x > 15 * box && direcao == "right") snake[0].x =0;
-  if(snake[0].x <0 && direcao=="left") snake[0].x = 16 * box;
+  if(snake[0].x < 0 && direcao=="left") snake[0].x = 16 * box;
   if(snake[0].y > 15 * box && direcao =="down") snake[0].y =0;
-  if(snake[0].y < 0 && direcao =="up") snake.y= 16 * box
+  if(snake[0].y < 0 && direcao =="up") snake[0].y= 16 * box
 
   criarBG();
   criarCobrinha();
