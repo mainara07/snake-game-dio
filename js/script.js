@@ -58,7 +58,13 @@ function iniciarJogo() {
   if(direcao =="down") snakeY += box
 
   //criando e retirando "cabeça" da cobrinha para seguir o jogo
-  snake.pop();
+  if (snakeX != food.x || snakeY != food.y){
+    snake.pop();
+  } else {
+    food.x= Math.floor(Math.random() * 15 + 1) * box,
+    food.y= Math.floor(Math.random() * 15 + 1) * box
+  }
+    
 
   //criando nova cabeça para cobrinha e ela seguir o jogo 
   let newHead = {
