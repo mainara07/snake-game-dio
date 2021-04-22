@@ -39,6 +39,13 @@ function update(event){
 }
 
 function iniciarJogo() {
+  for(i=1; i< snake.length; i++) {
+    if(snake[0].x == snake[i].x && snake[0].y == snake[i].y) {
+      clearInterval()
+      alert('Fim de jogo :(')
+    }
+  }
+
   if(snake[0].x > 15 * box && direcao == "right") snake[0].x =0;
   if(snake[0].x <0 && direcao=="left") snake[0].x = 16 * box;
   if(snake[0].y > 15 * box && direcao =="down") snake[0].y =0;
